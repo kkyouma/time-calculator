@@ -33,9 +33,10 @@ def add_time(start, duration, week_day=None):
     days = new_hour // 24
 
     if new_hour >= 12:
-        if period_start == "PM":
+        if period_start == "PM" and new_hour % 13 != 0:
             period = "AM"
-        else:
+            days += 1
+        elif period_start == "AM" and new_hour % 13 != 0:
             period = "PM"
 
         if new_hour > 12:
